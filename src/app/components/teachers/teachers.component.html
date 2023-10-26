@@ -1,0 +1,15 @@
+<app-cup [cup]="title"></app-cup>
+<div class="untree_co-section bg-light">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0" *ngFor="let teacher of pageOfItems">
+          <app-teacher [teacher]="teacher"></app-teacher>
+        </div>
+       
+      </div>
+    </div>
+    <div style="margin-left: 40%; margin-top: 3%;">
+      <jw-pagination [items]="teachers" [pageSize]="12" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
+  </div> 

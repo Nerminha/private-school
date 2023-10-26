@@ -1,0 +1,28 @@
+<app-cup [cup]="title"></app-cup>
+
+<div  style="margin-top: 12%; " class="services-section" *ngIf="course">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-4 mb-5 mb-lg-0" style="margin-left:-12%;">
+          <div class="section-title mb-3" data-aos="fade-up" data-aos-delay="0">
+            <h2 class="line-bottom mb-4">{{course.name}}</h2>
+          </div>
+
+          <p data-aos="fade-up" data-aos-delay="100">{{course.description }}</p>
+
+          <ul class="ul-check list-unstyled mb-5 primary" data-aos="fade-up" data-aos-delay="200">
+            <div class="meta mb-2"><span style="color: rgb(123, 209, 123); font-size: 25px;" class="icon-calendar mr-2"></span><span style="font-size: 19px; color: black; ">{{course.duree | date: "dd-MM-yyyy"}} <span style="font-weight: bold; color:rgb(123, 209, 123);">/</span> {{course.date | date: "dd-MM-yyyy"}}</span></div>
+            <div class="meta mb-2"><span class="icon-person mr-2" style="color: rgb(123, 209, 123); font-size: 25px;"></span><span style="font-size: 19px; color: black;">{{course.teacherName}}</span></div>
+            <i class="fas fa-money-bill" style="color: rgb(123, 209, 123); font-size: 25px;"></i><span style="color: black;font-size: 19px;">{{ course.price }} Dt</span>
+          </ul>
+        </div>
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="0">
+          <figure class="img-wrap-2">
+            <img [src]="course.img" alt="Image" class="image">
+            <div class="dotted"></div>
+          </figure>
+
+        </div>
+      </div>
+    </div>
+  </div>

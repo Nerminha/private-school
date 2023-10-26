@@ -1,0 +1,31 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Tel</th>
+      <th scope="col">Son's Tel</th>
+      <th scope="col" class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let parent of pageOfItems ">
+      <td>{{parent.firstName}}</td>
+      <td>{{parent.adresse}}</td>
+      <td>{{parent.mail}}</td>
+      <td>{{parent.tel}}</td>
+      <td>
+        <div *ngFor="let child of parent.childrenArray">{{child.childPhone}}</div>
+      </td>
+      <td style="display: flex;">
+        <button style="margin-left:3% ;" type="button" class="btn btn-outline-danger"
+          (click)=" deleteParent(parent._id)">Delete</button>
+        <button style="margin-left:3% ;" type="button" class="btn btn-outline-warning">Update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="margin-left: 20%; margin-top: 3%;">
+  <jw-pagination [items]="parents" [pageSize]="7" (changePage)="onChangePage($event)"></jw-pagination>
+</div>

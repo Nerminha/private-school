@@ -1,0 +1,48 @@
+<app-cup [cup]="title"></app-cup>
+<div class="untree_co-section" style="margin-top: 4%;">
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-lg-5 mx-auto order-1" data-aos="fade-up" data-aos-delay="200">
+                <form class="form-box" [formGroup]="ratingForm">
+
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <h6>select an assessment</h6>
+                            <select class="custom-select" formControlName="rating" (change)=" selectRatingValue($event)">
+
+                                <option style="color: black;" value="Excellent">Excellent</option>
+                                <option style="color: black;" value="Good">Good</option>
+                                <option style="color: black;" value="Satisfactory">Satisfactory</option>
+                                <option style="color: black;" value="Unsatisfactory">Unsatisfactory</option>
+                                <option style="color: black;" value="In progress">In Progress</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="number" class="form-control" formControlName="note" placeholder="Write the grade here">
+                        </div>
+                            <div  style="color: red ;margin-left:4%;" *ngIf="
+                            ratingForm.controls['note'].invalid &&
+                            (ratingForm.controls['note'].dirty ||
+                              ratingForm.controls['note'].touched)
+                          ">
+                            <div *ngIf="ratingForm.controls['note'].errors.required">
+                                The grade is required
+                            </div>
+                            <div *ngIf="ratingForm.controls['note'].errors.max ||ratingForm.controls['note'].errors.min">
+                                The grade must be between 0 and 20
+                            </div>
+                          </div>
+                       
+                        <div class="col-12 mb-3">
+                            <button [disabled]="ratingForm.invalid" type="submit" class="btn btn-success" style="margin-left: 35%;"
+                                (click)="postForCourse(); postForStudent();postForTeacher()">Apply</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Number of lessons</th>
+        <th scope="col">Start date</th>
+        <th scope="col">End date</th>
+        <th scope="col">Price</th>
+        <th scope="col" class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of coursesTab">
+        <th scope="row">{{course.name}}</th>
+        <th scope="row">{{course.nbLess}}</th>
+        <td>{{course.duree | date: "dd-MM-yyyy"}}</td>
+        <td>{{course.date | date: "dd-MM-yyyy"}}</td>
+        <td>{{course.price}} Dt</td>
+        <td>
+            <button class="btn btn-danger"(click)="deleteCourse(course._id)" style="border-radius: 0px;">Delete</button>
+            <button class="btn btn-warning"(click)="goToDisplayCourse(course._id)" style="margin-left: 2%;border-radius: 0px;">Display</button>
+            <button class="btn btn-success" (click)="goToEditCourse(course._id)" style="margin-left: 2%; border-radius: 0px;">Edit</button>
+                    </td>
+      </tr>
+     
+    </tbody>
+  </table>

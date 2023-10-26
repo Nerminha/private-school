@@ -1,0 +1,253 @@
+<app-cup [cup]="title"></app-cup>
+<div class="untree_co-section">
+  <div class="container">
+    <div class="row mb-5 justify-content-center">
+      <div class="col-lg-5 mx-auto order-1" data-aos="fade-up" data-aos-delay="200">
+        <form [formGroup]="signupForm" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-12 mb-3">
+              <input type="text" class="form-control" placeholder="Full name" formControlName="firstName">
+            </div>
+            <div  style="color: red ;margin-left:4%;" *ngIf="
+              signupForm.controls['firstName'].invalid &&
+              (signupForm.controls['firstName'].dirty ||
+                signupForm.controls['firstName'].touched)
+            ">
+              <div *ngIf="signupForm.controls['firstName'].errors.required">
+                First name is required
+              </div>
+              <div *ngIf="signupForm.controls['firstName'].errors.minlength">
+                First name should have at least 8 characters
+              </div>
+            </div>
+            <div class="col-12 mb-3" *ngIf="path==='/signupStudent'">
+              <input type="text" class="form-control" placeholder="Your age" formControlName="age">
+            </div>
+
+            <div  style="color: red ;margin-left:4%;"*ngIf="
+              signupForm.controls['age'].invalid &&
+              (signupForm.controls['age'].dirty||
+              signupForm.controls['age'].touched) 
+            ">
+              <div *ngIf="signupForm.controls['age'].errors.required">
+                Age is required
+              </div>
+              <div *ngIf="signupForm.controls['age'].errors.required">
+                You should be greather than 5 years old 
+              </div>
+            </div>
+            <div *ngIf="path=='/signupTeacher'" class="col-12 mb-3">
+                <input  type="text" class="form-control" placeholder="speciality" formControlName="speciality">
+              </div>
+              <div style="color: red; margin-left:4%;"  *ngIf="
+              signupForm .controls['speciality'].invalid &&
+              (signupForm .controls['speciality'].dirty )
+            ">
+              <div *ngIf="signupForm .controls['speciality'].errors.required">
+                speciality is required
+              </div>
+            </div>
+            <div class="col-12 mb-3">
+              <input type="text" class="form-control" placeholder="Your phone number" formControlName="tel">
+            </div>
+            <div  style="color: red ;margin-left:4%;" *ngIf="
+                 signupForm.controls['tel'].invalid &&
+                 (signupForm.controls['tel'].dirty ||
+                 signupForm.controls['tel'].touched)
+                ">
+              <div *ngIf="signupForm.controls['tel'].errors.required">
+                Phone number is required
+              </div>
+              <div *ngIf="signupForm.controls['tel'].hasError('pattern')">
+                Phone number must be 8 digits.
+              </div>
+            </div>
+            <div   *ngIf="path=='/signupParent'">
+            <div  style="display: flex;" class="col-12 mb-3">
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="numberOfChildren"
+                  placeholder="Number of Children"
+                >
+                <button
+                type="button"
+                class="btn btn-outline-success"
+                (click)="addChildrenFields()"
+                style=" border-radius: 15%;"
+              >
+                +
+              </button>
+              </div>
+              <div
+                class="col-sm-12"
+                style="color: red ;margin-left:4%;"
+                *ngIf="
+                signupForm .controls['numberOfChildren'].invalid &&
+                  (signupForm .controls['numberOfChildren'].dirty ||
+                    signupForm .controls['numberOfChildren'].touched)
+                "
+              >
+                <div
+                  *ngIf="
+                    signupForm .controls['numberOfChildren'].errors
+                      .required
+                  "
+                >
+                  Number Of Children is required
+                </div>
+                <div
+                  *ngIf="
+                    signupForm .controls['numberOfChildren'].errors.min
+                  "
+                >
+                  Number Of Children Should be > 0
+                </div>
+            
+               
+              
+            </div>
+
+            <div  class="col-12 mb-3" formArrayName="childrenArray" style="margin-top: 2%;">
+              <div
+                *ngFor="
+                  let child of signupForm .get('childrenArray').controls;
+                  let i = index
+                "
+              >
+                <div  [formGroupName]="i">
+                 
+                  <div  class="col-12 mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="childPhone"
+                      [placeholder]="'Child ' + (i + 1) + ' Phone Number'"
+                    />
+                  </div>
+                  <div
+                    class="col-sm-12"
+                    style="color: red"
+                    *ngIf="
+                      child.controls['childPhone'].invalid &&
+                      (child.controls['childPhone'].dirty ||
+                        child.controls['childPhone'].touched)
+                    "
+                  >
+                    <div *ngIf="child.controls['childPhone'].errors.required">
+                      Child Phone Number is required
+                    </div>
+                    <div *ngIf="child.controls['childPhone'].errors.pattern">
+                      Child Phone Number should have at least 8 number
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="col-12 mb-3">
+              <input *ngIf="path!='/signupAdmin'" type="text" class="form-control" placeholder="Address" formControlName="adresse">
+            </div>
+            <div  style="color: red ;margin-left:4%;" *ngIf="
+              signupForm.controls['adresse'].invalid &&
+              (signupForm.controls['adresse'].dirty )
+            ">
+              <div *ngIf="signupForm.controls['adresse'].errors.required">
+                Address is required
+              </div>
+            </div>
+            <div class="col-12 mb-3">
+              <input type="text" class="form-control" placeholder="Email" formControlName="mail">
+            </div>
+            <div  style="color: red ;margin-left:4%;" *ngIf="
+              signupForm.controls['mail'].invalid &&
+              (signupForm.controls['mail'].dirty ||
+                signupForm.controls['mail'].touched)
+            ">
+              <div *ngIf="signupForm.controls['mail'].errors.required">
+                Email is required
+              </div>
+              <div *ngIf="signupForm.controls['mail'].errors.email">
+                Please enter a valid email address
+              </div>
+            </div>
+            <div class="col-12 mb-3">
+              <input type="password" class="form-control" placeholder="Password" formControlName="pwd">
+            </div>
+            <div  style="color: red ;margin-left:4%;" *ngIf="
+              signupForm.controls['pwd'].invalid &&
+              (signupForm.controls['pwd'].dirty ||
+                signupForm.controls['pwd'].touched)
+            ">
+              <div *ngIf="signupForm.controls['pwd'].errors.required">
+                Password is required
+              </div>
+              <div *ngIf="signupForm.controls['pwd'].errors.minlength">
+                Password should have at least 5 characters
+              </div>
+              <div *ngIf="signupForm.controls['pwd'].errors.maxlength">
+                Password should have at most 10 characters
+              </div>
+              <div *ngIf="signupForm.controls['pwd'].hasError('pattern')">
+                Password must contain at least one digit, one uppercase letter, and one special character.
+              </div>
+            </div>
+                        
+            <div class="col-12 mb-3">
+              <input type="password" class="form-control" placeholder="Re-type Password" formControlName="confPwd" />
+            </div>
+            <div  style="color: red ;margin-left:4%;" *ngIf="
+              signupForm.controls['confPwd'].invalid &&
+              (signupForm.controls['confPwd'].dirty ||
+                signupForm.controls['confPwd'].touched)
+            ">
+              <div *ngIf="signupForm.controls['confPwd'].errors.required">
+                Re_type Password is required
+              </div>
+              <div *ngIf="signupForm.controls['confPwd'].errors.confPwd">
+                Confirm Pwd does not mutch Pwd
+              </div>
+            </div>
+            <div class="form-group" style="display: none;">
+              <input type="file" class="form-control" name="img" #filePicker (change)="onImageSelected($event,'img')">
+          </div>
+          <div *ngIf="path=='/signupTeacher' ||path=='/signupStudent'" class="text-center" style=" margin-left: 27%;">
+              <button class="btn btn-outline-success" style="border-radius: 0%;" (click)="filePicker.click()">Select your photo
+              </button>
+              <div class="mt-4 mb-4">
+                  <img [src]="imagePreview" alt="" width="200PX">
+              </div>
+
+          </div>
+          <div style="display: none;">
+            <input
+              type="file"
+              class="form-control mb-3"
+              name="cv"
+              #cvFilePicker
+              (change)="onImageSelected($event, 'cv')"
+
+            />
+          </div>
+          <div  *ngIf="path=='/signupTeacher'" class="text-center" style=" margin-left: 27%;">
+            <div>
+              <button type="button" (click)="cvFilePicker.click()" class="btn btn-outline-success"  style="border-radius: 0%;">Select Your Cv</button>
+            </div>
+           <div class="mt-4 mb-4"> 
+            <img [src]="cvPreview" width="200px" *ngIf="cvPreview">
+           </div>
+           
+          </div>
+       
+            <div class="col-12">
+              <input style="margin-left: 35%;" type="submit" value="Signup" class="btn btn-success"
+               
+               (click)="signup()">
+            </div>
+            <span style="color: red;" class="text-center">{{errorMsg}}</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

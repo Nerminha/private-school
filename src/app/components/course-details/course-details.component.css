@@ -1,0 +1,7 @@
+.image {
+    float: left; /* Alignement à gauche */
+    margin-left: 10px; /* Marge à droite pour l'espacement */
+    height: 700px;
+    width: 700px;
+  }
+  

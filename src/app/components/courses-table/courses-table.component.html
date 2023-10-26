@@ -1,0 +1,29 @@
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Course start date</th>
+        <th scope="col">Course end date</th>
+        <th scope="col">Teacher Name</th>
+        <th scope="col">Price</th>
+        <th scope="col" >Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of pageOfItems ">
+        <td>{{course.name}}</td>
+        <td>{{course.duree | date: "dd-MM-yyyy"}}</td>
+        <td>{{course.date | date: "dd-MM-yyyy"}}</td>
+        <td>{{course.teacherName}}</td>
+        <td>{{course.price}} Dt</td>
+        <td style="display: flex;">
+          <button style="margin-left:3% ;" type="button" class="btn btn-outline-danger"(click)=" deleteCourse(course._id)">Delete</button>
+        </td>
+  
+      </tr>
+  
+    </tbody>
+  </table>
+  <div style="margin-left: 20%; margin-top: 3%;">
+    <jw-pagination [items]="courses" [pageSize]="7" (changePage)="onChangePage($event)"></jw-pagination>
+  </div>

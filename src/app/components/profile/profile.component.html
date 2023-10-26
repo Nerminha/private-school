@@ -1,0 +1,29 @@
+<app-cup></app-cup>
+<div class="untree_co-section" *ngFor="let profile of userProfile">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-5 mb-5" >
+          <h2 class="line-bottom mb-4" data-aos="fade-up" data-aos-delay="0">{{user.firstName}}</h2>
+            <ul class="list-unstyled  mb-5 primary" data-aos="fade-up" data-aos-delay="200">
+              <p *ngIf="profile.role=='student'"><span style="color: green;margin-top: 10%; font-weight: bold;font-size: 20px;">age <span style="margin-left: 3%;">:</span></span>
+                <span style="color: black;font-size: 20px;margin-left: 12%;">{{ profile.age }}</span></p>
+              <p *ngIf="profile.role=='teacher'"><span style="color: green;margin-top: 10%; font-weight: bold;font-size: 20px;">Speciality<span style="margin-left: 3%;">:</span></span>
+                <span style="color: black;font-size: 20px;margin-left: 12%;">{{ profile.speciality}}</span></p>
+              <p><span style="color: green;margin-top: 10%; font-weight: bold;font-size: 20px;">Adresse <span style="margin-left: 3%;">:</span></span>
+                <span style="color: black;font-size: 20px;margin-left: 12%;">{{ profile.adresse}}</span></p>
+              <p><span style="color: green;margin-top: 10%; font-weight: bold;font-size: 20px;">mail<span style="margin-left: 3%;">:</span></span>
+                <span style="color: black;font-size: 20px;margin-left: 12%;">{{ profile.mail }}</span></p>
+              <p><span style="color: green;margin-top: 10%; font-weight: bold;font-size: 20px;">tel <span style="margin-left: 5%;">:</span></span>
+                <span style="color: black;font-size: 20px;margin-left: 12%;">{{ profile.tel }}</span></p>
+            </ul>
+        
+      
+    </div>
+    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="bg-1"></div>
+    <img [src]="profile.img" alt="" class="rounded img">
+    </div>
+        
+      </div>
+    </div>
+  </div>    

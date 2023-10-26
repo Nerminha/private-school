@@ -1,0 +1,73 @@
+<header >
+    <nav class="site-nav mb-5">
+        <div class="pb-2 top-bar mb-3">
+          <div class="container">
+            <div class="row align-items-center">
+    
+              <div class="col-6 col-lg-9">
+              
+                <a  class="small mr-3"><span class="icon-phone mr-2"></span> <span class="d-none d-lg-inline-block">+216 28 267 590</span></a> 
+                <a  class="small mr-3"><span class="icon-envelope mr-2"></span> <span class="d-none d-lg-inline-block">privateschool@mail.com</span></a> 
+              </div>
+    
+              <div class="col-6 col-lg-3 text-right">
+                <a *ngIf="!isLoggedIn()" routerLink="login" class="small mr-3">
+                  <span class="icon-lock"></span>
+                  Log In
+                </a>
+                 <button *ngIf="isLoggedIn()" class="btn" (click)="logout()"> <span class="icon-lock"><span class="small mr-3" style="font-size: 12px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;margin-left: 10%; font-weight: bold;">logout</span></span></button>
+                <span *ngIf="!isLoggedIn()"><a routerLink="signupAdmin" class="small">
+                  <span class="icon-person"></span>
+                  Register Admin
+                </a></span>
+                <span *ngIf="isLoggedIn()"><a routerLink="profile" class="small">
+                  <span class="icon-person"></span>
+                  Profile
+                </a></span>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+        <div class="sticky-nav js-sticky-header">
+          <div class="container position-relative">
+            <div class="site-navigation text-center">
+              <a href="index.html" class="logo menu-absolute m-0">Learner<span class="text-primary">.</span></a>
+    
+              <ul class="js-clone-nav d-none d-lg-inline-block site-menu">
+                <li class="active"><a href="index.html">Home</a></li>
+             
+                <li><a routerLink="teachers">Our Teachers</a></li>
+                <li *ngIf="isLoggedIn() && user.role=='teacher'"><a routerLink="dashTeacher">Your dashboard</a></li>
+              
+                <li *ngIf="isLoggedIn() && user.role=='admin'"><a routerLink="admin">Your dashboard</a></li>
+                <li *ngIf="isLoggedIn() && user.role=='teacher'"><a routerLink="addCourse">Add Course</a></li>
+                <li><a routerLink="courses">Our Courses</a></li>
+                <li *ngIf="isLoggedIn() && user.role=='student'"><a routerLink="dashStudent">Your Courses</a></li>
+                <li><a routerLink="searchTeachers">Search Teacher</a></li>
+                <li *ngIf="isLoggedIn()&& user.role=='parent'"><a routerLink="searchChild">child's assessment</a></li>
+                <li *ngIf="!isLoggedIn()"><a routerLink="signupTeacher" class="small">
+                  <span class="icon-person"></span>
+                  Register Teacher
+                </a></li>
+                <li *ngIf="!isLoggedIn()"><a routerLink="signupParent" class="small">
+                  <span class="icon-person"></span>
+                  Register Parent
+                </a></li>
+                <li *ngIf="!isLoggedIn()"><a routerLink="signupStudent" class="small">
+                  <span class="icon-person"></span>
+                  Register Student
+                </a></li>
+              </ul>
+    
+             
+    
+              <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+                <span></span>
+              </a>
+    
+            </div>
+          </div>
+        </div>
+      </nav>
+</header>

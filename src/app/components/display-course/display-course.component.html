@@ -1,0 +1,27 @@
+<app-cup [cup]="title"></app-cup>
+<table class="table table-borderless" style="margin: 3%;">
+  <thead>
+    <tr>
+      <th scope="col">Students</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Note</th>
+      <th scope="col">Add rating and note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of coursesWithRating"
+      [ngClass]="{
+        'table-success': student.note<=20,
+        'table-warning': student.note<15,
+        'table-danger': student.note<=9
+      }">
+      <td>{{ student.student.firstName }}</td>
+      <td >{{ student.rating }}</td>
+      <td >{{ student.note }}</td>
+      
+      <td>
+        <button *ngIf="student.rating=='Not available yet'" type="button" class="btn btn-outline-warning" style="border-radius: 0px; margin-left: 5%;" (click)="goToAddRating( student.student._id)">Add</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,20 @@
+.mbtn{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05rem;
+    background-color: rgb(37, 163, 100);
+    color: white;
+    border: none;
+    margin-top: 12%;
+    margin-left: 15%;
+   
+  }
+  .img{
+    height: 70%;
+    width: 100%;
+  }

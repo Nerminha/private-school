@@ -1,0 +1,28 @@
+<app-cup></app-cup>
+<div class="untree_co-section bg-light">
+    <div class="container"> 
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
+          <h2 class="line-bottom text-center mb-4">Looking for a teacher with specific expertise?</h2>
+          <p style="color: black; font-size: 20px;">Our Specialty Teacher Search is your solution. Find educators who excel in math, language, science, and more. Your perfect teacher is just a search away.</p>
+        </div>
+      </div>
+      <form (ngSubmit)="searchTeachers()" #specialtyForm="ngForm">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="specialty" placeholder="Search by specialty" required [(ngModel)]="specialty" [ngClass]="{ 'is-invalid': specialtyForm.submitted && specialtyForm.controls.specialty.invalid }">
+            <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0" *ngFor="let teacher of teachers">
+          <app-teacher [teacher]="teacher"></app-teacher>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  
+
+  

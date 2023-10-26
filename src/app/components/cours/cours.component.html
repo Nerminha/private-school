@@ -1,0 +1,15 @@
+<div class="custom-media" style="margin-bottom: 12%;">
+    <a href="#"><img [src]="course.img" alt="Image" class="img"></a>
+    <div class="custom-media-body">
+      <div class="d-flex justify-content-between pb-3">
+        <div class="text-primary"><span class="uil uil-book-open"></span> <span>{{course.nbLess}} lesson</span></div>
+      </div>
+      <h4 class="text-center text-success">{{course.name}}</h4>
+      <div class="meta mb-2"><span style="color: rgb(123, 209, 123); font-size: 25px;" class="icon-calendar mr-2"></span><span style="font-size: 19px; color: black; ">{{course.duree | date: "dd-MM-yyyy"}}</span></div>
+      <div class="meta mb-2"><span class="icon-person mr-2" style="color: rgb(123, 209, 123); font-size: 25px;"></span><span style="font-size: 19px; color: black;">{{course.teacherName}}</span></div>
+      <div class="border-top d-flex justify-content-between pt-3 mt-3 align-items-center">
+        <div><span class="price">{{course.price}}DT</span></div>
+        <div><button class="btn" (click)="goToDisplayCourse(course._id)">Learn More </button></div>
+      </div>
+    </div>
+  </div>

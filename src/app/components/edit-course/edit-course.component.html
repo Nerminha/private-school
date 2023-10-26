@@ -1,0 +1,111 @@
+<app-cup [cup]="title"></app-cup>
+<div class="untree_co-section">
+    <div class="container">
+      <div class="row mb-5 justify-content-center">
+        <div class="col-lg-5 mx-auto order-1" data-aos="fade-up" data-aos-delay="200">
+          <form [formGroup]="editForm" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-12 mb-3">
+                <input type="text" class="form-control" placeholder="Name" formControlName="name" >
+              </div>
+              <div style="color: red ;margin-left:4%;" *ngIf="
+                 editForm.controls['name'].invalid &&
+                 (editForm.controls['name'].dirty ||
+                 editForm.controls['name'].touched)
+                ">
+                <div *ngIf="editForm.controls['name'].errors.required">
+                  Name of Course is required
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <textarea class="form-control" name="des" formControlName="description" id="" cols="30" rows="3" placeholder="description"></textarea>
+              </div>
+              <div style="color: red ;margin-left:4%;" *ngIf="
+                 editForm.controls['description'].invalid &&
+                 (editForm.controls['description'].dirty ||
+                 editForm.controls['description'].touched)
+                ">
+                <div *ngIf="editForm.controls['description'].errors.required">
+                  date is required
+                </div>
+                
+              </div>
+              <div class="col-12 mb-3">
+                <input type="text" class="form-control"  formControlName="nbLess" placeholder="Number of lessons">
+              </div>
+              <div style="color: red ;margin-left:4%;" *ngIf="
+                 editForm.controls['nbLess'].invalid &&
+                 (editForm.controls['nbLess'].dirty ||
+                 editForm.controls['nbLess'].touched)
+                ">
+                <div *ngIf="editForm.controls['nbLess'].errors.required">
+                 Number of lessons is required
+                </div>
+                <div *ngIf="editForm.controls['nbLess'].errors.min">
+                  the number of lessons at least 4
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="date" class="form-control" placeholder="Duration" formControlName="duree">
+              </div>
+              <div style="color: red ;margin-left:4%;" *ngIf="
+                 editForm.controls['duree'].invalid &&
+                 (editForm.controls['duree'].dirty ||
+                 editForm.controls['duree'].touched)
+                ">
+                <div *ngIf="editForm.controls['duree'].errors.required">
+                  Course start date is required
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="date" placeholder="Sélectionnez une date" class="form-control"  formControlName="date">
+              </div>
+              <div style="color: red ;margin-left:4%;" *ngIf="
+                 editForm.controls['date'].invalid &&
+                 (editForm.controls['date'].dirty ||
+                 editForm.controls['date'].touched)
+                ">
+                <div *ngIf="editForm.controls['date'].errors.required">
+                  Course end date is required
+                </div>
+                <div *ngIf="editForm.controls['date'].errors.compareDates">
+                  Course end date should be after the date of starting
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <input type="text" class="form-control"  formControlName="price" placeholder="Price">
+              </div>
+              <div style="color: red ;margin-left:4%;" *ngIf="
+              editForm.controls['price'].invalid &&
+              (editForm.controls['price'].dirty ||
+              editForm.controls['price'].touched)
+             ">
+             <div *ngIf="editForm.controls['price'].errors.required">
+               Price is required
+             </div>
+             <div *ngIf="editForm.controls['price'].errors.min">
+            Price should be > 0
+             </div>
+           </div>
+              <div class="form-group" style="display: none;">
+                <input type="file" class="form-control" name="img" #filePicker (change)="onImageSelected($event,'img')">
+            </div>
+            <div class="text-center" style=" margin-left: 27%;">
+                <button class="btn btn-outline-success" style="border-radius: 0%;" (click)="filePicker.click()">Chose photo to your course
+                </button>
+                <div class="mt-4 mb-4">
+                    <img [src]="imagePreview" alt="" width="200PX">
+                </div>
+  
+            </div>
+              <div class="col-12">
+                <input style="margin-left: 35%;" type="submit" [value]="btnTitle" [disabled]="editForm.invalid" class="btn btn-success"
+                 
+                 (click)="addCours()">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<app-cup [cup]="title"></app-cup>
+<div class="untree_co-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
+                <h2 class="line-bottom text-center mb-4">Discover progress today!</h2>
+                <p style="color: black; font-size: 20px;">Quickly access your child's evaluations. Find out how they're doing in school with ease.</p>
+            </div>
+        </div>
+        <form (ngSubmit)="search()" #telChildForm="ngForm">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="telChild" placeholder="Enter your son's number here." required
+                    [(ngModel)]="telChild"
+                    [ngClass]="{ 'is-invalid': telChildForm.submitted && telChildForm.controls.telChild.invalid }">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" [disabled]="showTable" type="submit">Search</button>
+                </div>
+            </div>
+            <div *ngIf="showTable">
+                <table class="table table-borderless" style="margin: 3%;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cours</th>
+                            <th scope="col">Teacher Name</th>
+                            <th scope="col">Start date</th>
+                            <th scope="col">End date</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cours of coursesWithRating" [ngClass]="{
+                    'table-success': cours.note<=20,
+                    'table-warning': cours.note<15,
+                    'table-danger': cours.note<=9
+                  }">
+                            <td>{{ cours.course.name }}</td>
+                            <td>{{ cours.course.teacherName}}</td>
+                            <td>{{ cours.course.duree | date: "dd-MM-yyyy" }}</td>
+                            <td>{{ cours.course.date | date: "dd-MM-yyyy" }}</td>
+                            <td [style.color]="msgColor(cours.rating)">{{ cours.rating }}</td>
+                            <td [style.color]="msgColor(cours.rating)">{{ cours.note }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+.invalid-field {
+    border: 1px solid red;
+    color: red;
+}
+/* Style de base pour l'indicateur de mot de passe */
+/* #password-strength {
+    font-size: 14px;
+    margin-top: 10px;
+  } */
+  
+  /* Styles pour les niveaux de force du mot de passe */
+  /* #password-strength.weak {
+    color: red;
+  } */
+  
+  /* #password-strength.medium {
+    color: orange;
+  } */
+  
+  /* #password-strength.strong {
+    color: green;
+  } */
+  
+  /* Icônes pour les niveaux de force du mot de passe */
+  /* #password-strength.weak::before {
+    content: "🔴"; Icône pour un mot de passe faible
+  } */
+  
+  /* #password-strength.medium::before {
+    content: "🟡"; Icône pour un mot de passe moyen
+  } */
+  
+  /* #password-strength.strong::before {
+    content: "🟢"; Icône pour un mot de passe fort
+  } */
+  .invalid {
+    position: relative;
+  }
+  
+  .invalid #password-strength {
+    display: block;
+  }
+  
+  .invalid #password-strength:after {
+    content: "Password is required";
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+  }
+  
+  .invalid #password-strength.weak:after {
+    content: "Password should have at least one digit, one uppercase letter, and one special character.";
+  }
+  
+  .invalid #password-strength.medium:after {
+    content: "Password should have at least one digit, one uppercase letter, and one special character.";
+  }
+  
+  .invalid #password-strength.strong:after {
+    content: "Password should have at least one digit, one uppercase letter, and one special character.";
+  }
+  

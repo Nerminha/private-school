@@ -1,0 +1,19 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">TEl</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of studentsTab" >
+      <th scope="row">{{student.firstName}}</th>
+      <td>{{student.age}}</td>
+      <td>{{student.tel}}</td>
+      <td>{{student.mail}}</td>   
+    </tr>
+
+  </tbody>
+</table>

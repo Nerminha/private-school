@@ -1,0 +1,14 @@
+
+  .my-custom-pagination {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    text-align: center;
+    background: #469e68;
+    color: #ffffff;
+    border-radius: 50%;
+  }
+  
+  

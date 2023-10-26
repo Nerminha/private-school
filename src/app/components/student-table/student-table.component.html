@@ -1,0 +1,30 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Email</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Tel</th>
+      <th scope="col" class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of pageOfItems ">
+      <td>{{student.firstName}}</td>
+      <td>{{student.age}}</td>
+      <td>{{student.mail}}</td>
+      <td>{{student.adresse}}</td>
+      <td>{{student.tel}}</td>
+      <td style="display: flex;">
+        <button  type="button" class="btn btn-outline-success" (click)="goToAssignmentStudent(student._id)" >Add to cours</button>
+        <button style="margin-left:3% ;" type="button" class="btn btn-outline-danger"(click)="deleteStudent(student._id)">Delete</button>
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+<div style="margin-left: 20%; margin-top: 3%;">
+  <jw-pagination [items]="students"[pageSize]="7"(changePage)="onChangePage($event)" ></jw-pagination>
+</div>

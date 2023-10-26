@@ -1,0 +1,81 @@
+<app-cup [cup]="title"></app-cup>
+<div class="row justify-content-center mb-5" style="margin-top: 3%;">
+  <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
+    <p style="color: black; font-size: 20px;">You'll find a complete list of the courses you've regisred for</p>
+  </div>
+</div>
+  <div class="untree_co-section"*ngFor="let course of pageOfItems">
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 mr-auto mb-5 mb-lg-0"  data-aos="fade-up" data-aos-delay="0" >
+          <img [src]="course.img" alt="image" class="img">
+        </div>
+        <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="line-bottom mb-4">{{course.name}}</h3>
+          <div class="custom-accordion" id="accordion_1">
+            <div class="accordion-item">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >Course Description</button>
+              </h2>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion_1">
+                <div class="accordion-body">
+                  <div class="d-flex">
+                    
+                    <div>
+                      {{course.description}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+            <div class="accordion-item">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Course Date</button>
+              </h2>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion_1">
+                <div class="accordion-body">
+                  <div >
+                    <div>
+                      <div class="meta mb-2"><span style="color: rgb(123, 209, 123); font-size: 25px;" class="icon-calendar mr-2"></span><span style="font-size: 19px; color: black; ">{{course.duree | date: "dd-MM-yyyy"}}</span></div>
+
+                    </div>
+                    <div>
+                      <div class="meta mb-2"><span style="color: rgb(123, 209, 123); font-size: 25px;" class="icon-calendar mr-2"></span><span style="font-size: 19px; color: black; ">{{course.date | date: "dd-MM-yyyy"}}</span></div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <div class="accordion-item">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" (click)=" displayRate(course._id)">Your Evaluation</button>
+              </h2>
+
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion_1">
+                <div class="accordion-body">
+                  <div class="d-flex">
+                    <div>
+                       <p class="mb-4"><span style="color: green;">evaluation : </span>{{this.rate}}</p>
+                      <p class="mb-4"><span style="color: green;">Note : </span>{{this.note}}</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div> 
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-left:35%;margin-bottom: 3%;" >
+    <jw-pagination [items]="coursesTab" [pageSize]="1" (changePage)="onChangePage($event)"></jw-pagination>
+  </div>

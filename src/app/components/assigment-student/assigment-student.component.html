@@ -1,0 +1,35 @@
+<app-cup [cup]="title"></app-cup>
+<div class="untree_co-section" style="margin-top: 3%;">
+  <div class="container">
+    <div class="row mb-5 justify-content-center">
+      <div class="col-lg-5 mx-auto order-1" data-aos="fade-up" data-aos-delay="200">
+          <form class="form-box" [formGroup]="applyForm">
+           
+            <div class="row">
+                <div class="col-12 mb-3">
+                 <h6>Select Teacher</h6>
+                <select class="custom-select" formControlName="tId" (change)="selectTeacherId($event)">
+                 
+                    <option *ngFor="let teacher of teachersTab" style="color: black;" [value]="teacher._id">{{teacher.firstName}}</option>
+                  </select>
+                </div>
+                <div class="col-12 mb-3">
+                  <h6>Select course</h6>
+                    <select class="custom-select" formControlName="cId"  (change)=" selectCourseId($event)"  >
+                      <ng-container *ngFor="let course of coursesTab">
+                        <option  style="color: black;" [value]="course._id" *ngIf="teacherId === course.teacherId">{{course.name}}</option>
+                      </ng-container>
+                      </select>
+                    </div>
+              <div class="col-12 mb-3">
+                <button type="submit" class="btn btn-success" style="margin-left: 35%;" (click)="apply()" >Apply</button>
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+
+      
+    </div>
+  </div> 
